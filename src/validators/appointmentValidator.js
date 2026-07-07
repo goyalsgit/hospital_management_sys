@@ -4,9 +4,11 @@ const bookAppointmentSchema = Joi.object({
   doctorId: Joi.string().required()
     .messages({ "any.required": "Doctor ID is required" }),
 
-  date: Joi.date().min("now").required()
+  date: Joi.alternatives().try(
+    Joi.date(),
+    Joi.string().trim()
+  ).required()
     .messages({
-      "date.min": "Cannot book in the past",
       "any.required": "Date is required",
     }),
 
