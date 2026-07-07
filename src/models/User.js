@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    // Coins/wallet system — earned by writing reviews, referrals etc
+    coins: {
+      type: Number,
+      default: 50, // new users get 50 welcome coins
+      min: 0,
+    },
   },
   {
     timestamps: true,
