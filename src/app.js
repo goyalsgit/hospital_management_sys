@@ -46,8 +46,14 @@ app.use("/api/auth", authLimiter);
 // ==========================================
 
 // CORS — allows frontend to call this backend
+// In production, replace localhost with your Vercel URL
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.FRONTEND_URL,  // set this in Render env vars
+].filter(Boolean);  // removes undefined values
+
 app.use(cors({
-  origin: ["http://localhost:3000"],
+  origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
