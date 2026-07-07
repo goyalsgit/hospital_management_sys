@@ -25,6 +25,7 @@ const registerSchema = Joi.object({
     }),
 
   phone: Joi.string().trim().allow("").optional(),
+  role: Joi.string().valid("PATIENT").optional(),
 });
 
 const loginSchema = Joi.object({
